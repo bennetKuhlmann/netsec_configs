@@ -1,12 +1,9 @@
 #!/bin/bash
 
-sudo -s
-
 ip addr add 200.200.200.200/32 dev eth0
 ip route add 0.0.0.0/0 via 200.200.200.200 dev eth0
 
 # ---------- WIREGUARD ----------
-apt install wireguard
 wg genkey > /etc/wireguard/remote.key
 wg genkey < /etc/wireguard/remote.key > /etc/wireguard/remote.key.pub
 WG_PRIV_KEY=$(cat /etc/wireguard/remote.key)
