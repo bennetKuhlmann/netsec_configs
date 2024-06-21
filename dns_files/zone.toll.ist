@@ -1,0 +1,25 @@
+; dns zone for for ist.toll
+; möchte in /var/lib/bind/ leben
+$ORIGIN ist.toll.
+$TTL 1D
+; any time you make a change to the domain, bump the
+; "serial" setting below. the format is easy:
+; YYYYMMDDI, with the I being an iterator in case you
+; make more than one change during any one day
+@     IN SOA   netsec hostmaster (
+                        200405193 ; serial
+                        8H        ; refresh
+                        4H        ; retry
+                        4W        ; expire
+                        1D )      ; minimum
+; define domain functions with CNAMEs
+web           	CNAME   dns
+; just in case someone asks for localhost.ist.toll
+localhost       A       127.0.0.1
+; our hostnames, in alphabetical order
+dns             A       10.0.0.11
+vpn				A		10.0.0.4
+www				A		10.0.0.10
+twp				A		10.0.0.12
+ids				A		10.0.0.3
+fw				A		10.0.0.1

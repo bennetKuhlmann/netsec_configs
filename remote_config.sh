@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ip addr add 200.200.200.200/32 dev eth0
-ip route add 0.0.0.0/0 via 200.200.200.200 dev eth0
+ip route add 141.30.30.30/32 via 200.200.200.200 dev eth0
 
 # ---------- WIREGUARD ----------
 wg genkey > /etc/wireguard/remote.key
@@ -19,6 +19,7 @@ PublicKey = <insert-public-key-from-vpn-server>
 Endpoint = 141.30.30.30:51820
 AllowedIPs = 10.0.1.0/24
 EOF
+# also maybe PersistentKeepalive
 
 chmod 600 /etc/wireguard/remote.key
 chmod 644 /etc/wireguard/remote.key.pub

@@ -1,6 +1,7 @@
 #!/bin/bash
 
 apt update
-apt install wireshark
+apt install -y wireshark
+apt install -y termshark
 
-#ifdown eth1
+ifdown eth1

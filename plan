@@ -1,0 +1,5 @@
+1. startup fw1 - fw2 - lan pc
+2. reproduce ping
+3. install wireguard + start capture
+4. do ping
+5. setup point to point wireguard + test

@@ -13,7 +13,7 @@ sysctl -w net.ipv4.ip_forward=1
 for chain in "FORWARD INPUT OUTPUT"; do
   iptables --flush $chain
   iptables --policy $chain DROP
-  iptables --append $chain --match state --state INVALID --jump DROP
+  iptables --append $chain --match conntrack --ctstate INVALID --jump DROP
 done
 
 # ---------- WIREGUARD ----------
@@ -36,6 +36,9 @@ EOF
 chmod 600 /etc/wireguard/vpn.key
 chmod 644 /etc/wireguard/vpn.key.pub
 chmod 600 /etc/wireguard/wg0.conf
+
+iptables --append INPUT --source 141.30.30.30 --destination 10.0.0.4 --protocol udp --dport 51820 --in-interface eth0 --match conntrack --ctstate NEW,ESTABLISHED --jump ACCEPT
+iptables --append OUTPUT --source 10.0.0.4 --destination 141.30.30.30 --protocol udp --sport 51820 --out-interface eth0 --match conntrack --ctstate ESTABLISHED --jump ACCEPT
 
 iptables --table mangle --append PREROUTING --in-interface wg0 --jump MARK --set-mark 0x30
 iptables --table nat --append POSTROUTING ! --out-interface wg0 --match mark --mark 0x30 --jump MASQUERADE
