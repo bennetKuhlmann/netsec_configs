@@ -1,5 +1,4 @@
 #!/bin/bash
-
 ip addr add 210.210.210.210/32 dev eth0
 ip route add 141.30.30.30/32 dev eth0
 

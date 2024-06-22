@@ -1,0 +1,1 @@
+watch 'printf "     FILTER:\n\n" && iptables --list && printf "\n\n\n     NAT:\n\n" && iptables -t nat --list'

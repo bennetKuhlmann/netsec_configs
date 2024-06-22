@@ -1,6 +1,4 @@
 #!/bin/bash
-sudo -s
-
 ip addr add 141.30.30.30/16 dev eth0
 ip route add 200.200.200.200/32 dev eth0
 ip route add 210.210.210.210/32 dev eth0
@@ -12,7 +10,7 @@ sysctl -w net.ipv4.ip_forward=1
 
 # ---------- FIREWALL -----------
 # initial rules
-for chain in "FORWARD INPUT OUTPUT"; do
+for chain in FORWARD INPUT OUTPUT; do
   iptables --flush $chain
   iptables --policy $chain DROP
   iptables --append $chain --match conntrack --ctstate INVALID --jump DROP
