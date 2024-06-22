@@ -1,6 +1,9 @@
 #!/bin/bash
+sudo -s
 
 apt update
-apt install wireshark
+apt install -y wireshark
+timedatectl set-ntp true
 
-#ifdown eth1
+# down the last (internet able interface)
+ifdown eth1
