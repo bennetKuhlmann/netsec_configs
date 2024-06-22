@@ -1,0 +1,4 @@
+zone "ist.toll" IN {
+  type master;
+  file "zone.toll.ist";
+};

@@ -1,0 +1,9 @@
+options {
+    directory "/var/lib/bind";
+
+    forwarders {
+      141.30.1.1;
+    };
+    //dnssec-validation auto;
+    //listen-on-v6 { any; };
+};
