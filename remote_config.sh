@@ -4,7 +4,7 @@ ip route add 141.30.30.30/32 dev eth0
 
 # ---------- WIREGUARD ----------
 wg genkey > /etc/wireguard/remote.key
-wg genkey < /etc/wireguard/remote.key > /etc/wireguard/remote.key.pub
+wg pubkey < /etc/wireguard/remote.key > /etc/wireguard/remote.key.pub
 WG_PRIV_KEY=$(cat /etc/wireguard/remote.key)
 
 cat <<EOF > /etc/wireguard/wg0.conf

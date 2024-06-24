@@ -16,7 +16,7 @@ done
 
 # ---------- WIREGUARD ----------
 wg genkey > /etc/wireguard/vpn.key
-wg genkey < /etc/wireguard/vpn.key > /etc/wireguard/vpn.key.pub
+wg pubkey < /etc/wireguard/vpn.key > /etc/wireguard/vpn.key.pub
 WG_PRIV_KEY=$(cat /etc/wireguard/vpn.key)
 
 cat <<EOF > /etc/wireguard/wg0.conf
