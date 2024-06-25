@@ -16,7 +16,8 @@ ListenPort = 51821
 [Peer]
 PublicKey = <insert-public-key-from-vpn-server>
 Endpoint = 141.30.30.30:51820
-AllowedIPs = 10.0.1.0/24
+AllowedIPs = 10.0.1.0/32, 10.0.1.2/31, 10.0.1.4/30, 10.0.1.8/29, 10.0.1.16/28, 10.0.1.32/27, 10.0.1.64/26, 10.0.1.128/25
+PersistentKeepalive = 25
 EOF
 # also maybe PersistentKeepalive
 
